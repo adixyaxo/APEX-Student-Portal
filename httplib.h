@@ -10491,7 +10491,7 @@ inline bool PathParamsMatcher::match(Request &request) const {
     starting_pos += fragment.length();
 
     // Should only happen when we have a static fragment after a param
-    // Example: '/users/:id/subscriptions'
+    // Example: '/Students/:id/subscriptions'
     // The 'subscriptions' fragment here does not have a corresponding param
     if (i >= param_names_.size()) { continue; }
 
@@ -13526,7 +13526,7 @@ inline bool ClientImpl::write_request(Stream &strm, Request &req,
       auto normalized = detail::normalize_query_string(query_part);
       if (!normalized.empty()) { path_with_query += '?' + normalized; }
 
-      // Still populate req.params for handlers/users who read them.
+      // Still populate req.params for handlers/Students who read them.
       detail::parse_query_text(query_part, req.params);
     } else {
       // No query in path; parse any query_part (empty) and append params
