@@ -51,6 +51,7 @@ private:
   int rank_change;
   std::string mobile;
   std::string university_mail;
+  std::string password;
   std::unordered_map<std::string, SUBJECT> subjects;
 
 public:
@@ -81,20 +82,16 @@ public:
   void set_rank_change(int rank_change) { this->rank_change = rank_change; }
   void set_mobile(std::string mobile) { this->mobile = mobile; }
   void set_university_mail(std::string university_mail) { this->university_mail = university_mail; }
+  void set_password(std::string password) { this->password = password; }
   void set_subjects(std::unordered_map<std::string, SUBJECT> subjects) { this->subjects = subjects; }
   STUDENT(std::string name,
           std::string roll_no,
           std::string course,
           std::string specialization,
           int current_semester,
-          float current_cgpa,
-          int current_rank,
-          int credits_earned,
-          double percentile,
-          int rank_change,
           std::string mobile,
           std::string university_mail,
-          std::unordered_map<std::string, SUBJECT> subjects);
+          std::string password);
   ~STUDENT();
 };
 STUDENT::STUDENT(std::string name,
@@ -102,14 +99,9 @@ STUDENT::STUDENT(std::string name,
                  std::string course,
                  std::string specialization,
                  int current_semester,
-                 float current_cgpa,
-                 int current_rank,
-                 int credits_earned,
-                 double percentile,
-                 int rank_change,
                  std::string mobile,
                  std::string university_mail,
-                 std::unordered_map<std::string, SUBJECT> subjects)
+                 std::string password)
 {
   this->name = name;
   this->roll_no = roll_no;
@@ -117,12 +109,7 @@ STUDENT::STUDENT(std::string name,
   this->specialization = specialization;
   this->current_semester = current_semester;
   this->course = course;
-  this->current_cgpa = current_cgpa;
-  this->current_rank = current_rank;
-  this->credits_earned = credits_earned;
-  this->percentile = percentile;
-  this->rank_change = rank_change;
   this->mobile = mobile;
   this->university_mail = university_mail;
-  this->subjects = subjects;
+  this->password = password;
 }
