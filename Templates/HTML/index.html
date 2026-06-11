@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX — Rankings</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+</head>
+<body class="page-wrapper">
+
+  <!-- Navigation -->
+  <nav class="apex-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        APEX <span>v2.1</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Rankings</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="nav-user">
+        <span class="nav-user-name">22SCSE101234</span>
+        <button class="btn-logout" onclick="window.location='login.html'">Sign out</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="rankings-main">
+
+    <!-- Hero header -->
+    <section class="rankings-hero container fade-up">
+      <div class="hero-left">
+        <span class="hero-eyebrow">Semester VI · Jan–Jun 2025</span>
+        <h1>Academic<br/><em>Rankings</em></h1>
+      </div>
+      <div class="hero-right">
+        <p class="hero-desc">
+          Calculated in real time by the APEX engine using a
+          weighted-average CGPA model. Rankings update on each
+          grade submission cycle.
+        </p>
+        <div class="hero-meta">
+          <span class="tag">1,248 students ranked</span>
+          <span class="tag">Last updated: Jun 2025</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline container" />
+
+    <!-- Controls bar -->
+    <section class="controls-bar container fade-up fade-up-delay-1">
+      <div class="controls-left">
+        <span class="controls-label">Top 10</span>
+        <span class="controls-sep">—</span>
+        <span class="controls-desc">Highest CGPA this semester</span>
+      </div>
+      <div class="controls-right">
+        <div class="search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input
+            class="search-input"
+            type="search"
+            placeholder="Search by name or ID…"
+            id="rankSearch"
+          />
+        </div>
+        <button class="filter-btn" id="filterBtn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+          </svg>
+          Filter
+        </button>
+      </div>
+    </section>
+
+    <!-- Rankings table header -->
+    <section class="table-section container fade-up fade-up-delay-2">
+      <div class="table-header">
+        <span class="col-rank">Rank</span>
+        <span class="col-name">Student</span>
+        <span class="col-id">Enrollment ID</span>
+        <span class="col-branch">Branch</span>
+        <span class="col-cgpa">CGPA</span>
+        <span class="col-credits">Credits</span>
+        <span class="col-action"></span>
+      </div>
+
+      <!-- Rankings list — opacity descends each row -->
+      <ul class="rankings-list" id="rankingsList">
+
+        <!-- Rank 1 — opacity 1.00 -->
+        <li class="rank-row rank-1" style="--row-opacity: 1.00;" data-rank="1">
+          <span class="col-rank">
+            <span class="rank-num">01</span>
+            <span class="rank-crown" aria-label="Top rank">◆</span>
+          </span>
+          <span class="col-name">
+            <span class="student-name">Priya Sharma</span>
+            <span class="student-semester">Sem VI</span>
+          </span>
+          <span class="col-id">22SCSE100012</span>
+          <span class="col-branch">CSE</span>
+          <span class="col-cgpa">
+            <span class="cgpa-value">9.87</span>
+            <span class="cgpa-bar" style="--fill: 98.7%;"></span>
+          </span>
+          <span class="col-credits">180</span>
+          <span class="col-action">
+            <a href="profile.html" class="row-link">View →</a>
+          </span>
+        </li>
+
+        <!-- Rank 2 — opacity 0.92 -->
+        <li class="rank-row rank-2" style="--row-opacity: 0.92;" data-rank="2">
+          <span class="col-rank"><span class="rank-num">02</span></span>
+          <span class="col-name">
+            <span class="student-name">Arjun Mehta</span>
+            <span class="student-semester">Sem VI</span>
+          </span>
+          <span class="col-id">22SCSE100087</span>
+          <span class="col-branch">CSE</span>
+          <span class="col-cgpa">
+            <span class="cgpa-value">9.74</span>
+            <span class="cgpa-bar" style="--fill: 97.4%;"></span>
+          </span>
+          <span class="col-credits">180</span>
+          <span class="col-action"><a href="profile.html" class="row-link">View →</a></span>
+        </li>
+
+        <!-- Rank 3 — opacity 0.84 -->
+        <li class="rank-row rank-3" style="--row-opacity: 0.84;" data-rank="3">
+          <span class="col-rank"><span class="rank-num">03</span></span>
+          <span class="col-name">
+            <span class="student-name">Divya Nair</span>
+            <span class="student-semester">Sem VI</span>
+          </span>
+          <span class="col-id">22SCSE100203</span>
+          <span class="col-branch">CSE</span>
+          <span class="col-cgpa">
+            <span class="cgpa-value">9.61</span>
+            <span class="cgpa-bar" style="--fill: 96.1%;"></span>
+          </span>
+          <span class="col-credits">176</span>
+          <span class="col-action"><a href="profile.html" class="row-link">View →</a></span>
+        </li>
+
+        <!-- Rank 4 — opacity 0.76 -->
+        <li class="rank-row rank-4" style="--row-opacity: 0.76;" data-rank="4">
+          <span class="col-rank"><span class="rank-num">04</span></span>
+          <span class="col-name">
+            <span class="student-name">Rahul Verma</span>
+            <span class="student-semester">Sem VI</span>
+          </span>
+          <span class="col-id">22SCSE100344</span>
+          <span class="col-branch">CSE</span>
+          <span class="col-cgpa">
+            <span class="cgpa-value">9.52</span>
+            <span class="cgpa-bar" style="--fill: 95.2%;"></span>
+          </span>
+          <span class="col-credits">176</span>
+          <span class="col-action"><a href="profile.html" class="row-link">View →</a></span>
+        </li>
+
+        <!-- Rank 5 — opacity 0.68 -->
+        <li class="rank-row rank-5" style="--row-opacity: 0.68;" data-rank="5">
+          <span class="col-rank"><span class="rank-num">05</span></span>
+          <span class="col-name">
+            <span class="student-name">Sneha Iyer</span>
+            <span class="student-semester">Sem VI</span>
+          </span>
+          <span class="col-id">22SCSE100419</span>
+          <span class="col-branch">CSE</span>
+          <span class="col-cgpa">
+            <span class="cgpa-value">9.44</span>
+            <span class="cgpa-bar" style="--fill: 94.4%;"></span>
+          </span>
+          <span class="col-credits">172</span>
+          <span class="col-action"><a href="profile.html" class="row-link">View →</a></span>
+        </li>
+
+        <!-- Rank 6 — opacity 0.60 -->
+        <li class="rank-row rank-6" style="--row-opacity: 0.60;" data-rank="6">
+          <span class="col-rank"><span class="rank-num">06</span></span>
+          <span class="col-name">
+            <span class="student-name">Karan Singh</span>
+            <span class="student-semester">Sem VI</span>
+          </span>
+          <span class="col-id">22SCSE100528</span>
+          <span class="col-branch">CSE</span>
+          <span class="col-cgpa">
+            <span class="cgpa-value">9.38</span>
+            <span class="cgpa-bar" style="--fill: 93.8%;"></span>
+          </span>
+          <span class="col-credits">172</span>
+          <span class="col-action"><a href="profile.html" class="row-link">View →</a></span>
+        </li>
+
+        <!-- Rank 7 — opacity 0.52 -->
+        <li class="rank-row rank-7" style="--row-opacity: 0.52;" data-rank="7">
+          <span class="col-rank"><span class="rank-num">07</span></span>
+          <span class="col-name">
+            <span class="student-name">Ananya Gupta</span>
+            <span class="student-semester">Sem V</span>
+          </span>
+          <span class="col-id">23SCSE100061</span>
+          <span class="col-branch">CSE</span>
+          <span class="col-cgpa">
+            <span class="cgpa-value">9.31</span>
+            <span class="cgpa-bar" style="--fill: 93.1%;"></span>
+          </span>
+          <span class="col-credits">148</span>
+          <span class="col-action"><a href="profile.html" class="row-link">View →</a></span>
+        </li>
+
+        <!-- Rank 8 — opacity 0.44 -->
+        <li class="rank-row rank-8" style="--row-opacity: 0.44;" data-rank="8">
+          <span class="col-rank"><span class="rank-num">08</span></span>
+          <span class="col-name">
+            <span class="student-name">Vikram Rao</span>
+            <span class="student-semester">Sem VI</span>
+          </span>
+          <span class="col-id">22SCSE100712</span>
+          <span class="col-branch">CSE</span>
+          <span class="col-cgpa">
+            <span class="cgpa-value">9.27</span>
+            <span class="cgpa-bar" style="--fill: 92.7%;"></span>
+          </span>
+          <span class="col-credits">176</span>
+          <span class="col-action"><a href="profile.html" class="row-link">View →</a></span>
+        </li>
+
+        <!-- Rank 9 — opacity 0.36 -->
+        <li class="rank-row rank-9" style="--row-opacity: 0.36;" data-rank="9">
+          <span class="col-rank"><span class="rank-num">09</span></span>
+          <span class="col-name">
+            <span class="student-name">Meera Pillai</span>
+            <span class="student-semester">Sem VI</span>
+          </span>
+          <span class="col-id">22SCSE100845</span>
+          <span class="col-branch">CSE</span>
+          <span class="col-cgpa">
+            <span class="cgpa-value">9.19</span>
+            <span class="cgpa-bar" style="--fill: 91.9%;"></span>
+          </span>
+          <span class="col-credits">176</span>
+          <span class="col-action"><a href="profile.html" class="row-link">View →</a></span>
+        </li>
+
+        <!-- Rank 10 — opacity 0.28 -->
+        <li class="rank-row rank-10" style="--row-opacity: 0.28;" data-rank="10">
+          <span class="col-rank"><span class="rank-num">10</span></span>
+          <span class="col-name">
+            <span class="student-name">Rohit Agarwal</span>
+            <span class="student-semester">Sem VI</span>
+          </span>
+          <span class="col-id">22SCSE100993</span>
+          <span class="col-branch">CSE</span>
+          <span class="col-cgpa">
+            <span class="cgpa-value">9.14</span>
+            <span class="cgpa-bar" style="--fill: 91.4%;"></span>
+          </span>
+          <span class="col-credits">176</span>
+          <span class="col-action"><a href="profile.html" class="row-link">View →</a></span>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- Your position block -->
+    <section class="your-rank-section container fade-up fade-up-delay-3">
+      <div class="your-rank-inner">
+        <div class="your-rank-left">
+          <span class="yr-label">Your position</span>
+          <div class="yr-data">
+            <span class="yr-rank">#247</span>
+            <span class="yr-percentile">Top 20%</span>
+          </div>
+        </div>
+        <div class="your-rank-right">
+          <div class="yr-stat">
+            <span class="yr-stat-val">8.41</span>
+            <span class="yr-stat-key">CGPA</span>
+          </div>
+          <div class="yr-stat">
+            <span class="yr-stat-val">148</span>
+            <span class="yr-stat-key">Credits</span>
+          </div>
+          <div class="yr-stat">
+            <span class="yr-stat-val">+12</span>
+            <span class="yr-stat-key">Rank change ↑</span>
+          </div>
+          <a href="profile.html" class="btn-secondary yr-btn">View full profile</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="apex-footer">
+    <div class="footer-inner">
+      <span class="footer-left">APEX © 2025 · NorthCap University</span>
+      <div class="footer-right">
+        <a href="about.html">About</a>
+        <a href="#">Methodology</a>
+        <a href="#">API Docs</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/index.js"></script>
+</body>
+</html>

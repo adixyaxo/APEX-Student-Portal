@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX — Profile</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/profile.css" />
+</head>
+<body class="page-wrapper">
+
+  <!-- Navigation -->
+  <nav class="apex-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        APEX <span>v2.1</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Rankings</a></li>
+        <li><a href="profile.html" class="active">Profile</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="nav-user">
+        <span class="nav-user-name">22SCSE101234</span>
+        <button class="btn-logout" onclick="window.location='login.html'">Sign out</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="profile-main">
+
+    <!-- Profile header -->
+    <section class="profile-hero container fade-up">
+      <div class="profile-identity">
+        <div class="profile-avatar" aria-label="Student initials">AD</div>
+        <div class="profile-meta">
+          <h1>Aditya Dagar</h1>
+          <div class="profile-sub">
+            <span class="tag">22SCSE101234</span>
+            <span class="tag">B.Tech CSE</span>
+            <span class="tag">Semester II</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-stats-row">
+        <div class="pstat">
+          <span class="pstat-val">8.41</span>
+          <span class="pstat-key">CGPA</span>
+        </div>
+        <div class="pstat-div"></div>
+        <div class="pstat">
+          <span class="pstat-val">#247</span>
+          <span class="pstat-key">University rank</span>
+        </div>
+        <div class="pstat-div"></div>
+        <div class="pstat">
+          <span class="pstat-val">148</span>
+          <span class="pstat-key">Credits earned</span>
+        </div>
+        <div class="pstat-div"></div>
+        <div class="pstat">
+          <span class="pstat-val">Top 20%</span>
+          <span class="pstat-key">Percentile</span>
+        </div>
+        <div class="pstat-div"></div>
+        <div class="pstat">
+          <span class="pstat-val">+12</span>
+          <span class="pstat-key">Rank change</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline container" />
+
+    <!-- Main content grid -->
+    <div class="profile-grid container fade-up fade-up-delay-1">
+
+      <!-- Left: personal details + semester record -->
+      <div class="profile-col-left">
+
+        <!-- Personal information -->
+        <section class="profile-section">
+          <div class="section-head">
+            <h3>Personal Information</h3>
+            <button class="edit-btn" id="editInfoBtn" type="button">Edit</button>
+          </div>
+
+          <form id="infoForm" class="info-form" novalidate>
+            <div class="info-grid">
+              <div class="form-group">
+                <label class="form-label" for="fullName">Full Name</label>
+                <input class="form-input" type="text" id="fullName" value="Aditya Dagar" disabled />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="enrollId">Enrollment ID</label>
+                <input class="form-input" type="text" id="enrollId" value="22SCSE101234" disabled />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="branch">Branch</label>
+                <input class="form-input" type="text" id="branch" value="Computer Science & Engineering" disabled />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="section">Section</label>
+                <input class="form-input" type="text" id="section" value="A" disabled />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">University Email</label>
+                <input class="form-input" type="email" id="email" value="22scse101234@ncuindia.edu" disabled />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="mobile">Mobile</label>
+                <input class="form-input" type="tel" id="mobile" value="+91 98765 43210" disabled />
+              </div>
+            </div>
+
+            <div class="form-actions info-actions" style="display:none;" id="infoActions">
+              <button type="submit" class="btn-primary save-btn">Save changes</button>
+              <button type="button" class="btn-secondary" id="cancelInfoBtn">Cancel</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- CGPA trend -->
+        <section class="profile-section">
+          <div class="section-head">
+            <h3>CGPA Progression</h3>
+            <span class="tag">Sem I – VI</span>
+          </div>
+
+          <div class="cgpa-chart" aria-label="CGPA bar chart by semester">
+            <div class="chart-bars">
+              <div class="chart-bar-wrap">
+                <span class="bar-label-val">7.80</span>
+                <div class="chart-bar" style="--bar-h: 78%;"></div>
+                <span class="bar-label-sem">I</span>
+              </div>
+              <div class="chart-bar-wrap">
+                <span class="bar-label-val">8.10</span>
+                <div class="chart-bar" style="--bar-h: 81%;"></div>
+                <span class="bar-label-sem">II</span>
+              </div>
+              <div class="chart-bar-wrap">
+                <span class="bar-label-val">8.20</span>
+                <div class="chart-bar" style="--bar-h: 82%;"></div>
+                <span class="bar-label-sem">III</span>
+              </div>
+              <div class="chart-bar-wrap">
+                <span class="bar-label-val">8.35</span>
+                <div class="chart-bar" style="--bar-h: 83.5%;"></div>
+                <span class="bar-label-sem">IV</span>
+              </div>
+              <div class="chart-bar-wrap">
+                <span class="bar-label-val">8.41</span>
+                <div class="chart-bar chart-bar-active" style="--bar-h: 84.1%;"></div>
+                <span class="bar-label-sem">V</span>
+              </div>
+              <div class="chart-bar-wrap">
+                <span class="bar-label-val">—</span>
+                <div class="chart-bar chart-bar-pending" style="--bar-h: 0%;"></div>
+                <span class="bar-label-sem">VI</span>
+              </div>
+            </div>
+            <div class="chart-baseline"></div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Right: marks entry -->
+      <div class="profile-col-right">
+
+        <!-- Add marks -->
+        <section class="profile-section marks-section">
+          <div class="section-head">
+            <h3>Subject Marks</h3>
+            <button class="add-subject-btn" id="addSubjectBtn" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              Add Subject
+            </button>
+          </div>
+
+          <!-- Subjects table -->
+          <div class="marks-table-wrap">
+            <div class="marks-table-header">
+              <span>Subject</span>
+              <span>Code</span>
+              <span>Credits</span>
+              <span>Internal</span>
+              <span>External</span>
+              <span>Total</span>
+              <span>Grade</span>
+              <span></span>
+            </div>
+
+            <ul class="marks-list" id="marksList">
+
+              <li class="marks-row" data-id="1">
+                <span class="mk-subject">Data Structures & Algorithms</span>
+                <span class="mk-code">CSE201</span>
+                <span class="mk-credits">4</span>
+                <span class="mk-internal">38</span>
+                <span class="mk-external">62</span>
+                <span class="mk-total">100</span>
+                <span class="mk-grade grade-o">O</span>
+                <button class="row-del-btn" aria-label="Remove subject" onclick="removeSubject(1)">×</button>
+              </li>
+
+              <li class="marks-row" data-id="2">
+                <span class="mk-subject">Operating Systems</span>
+                <span class="mk-code">CSE204</span>
+                <span class="mk-credits">4</span>
+                <span class="mk-internal">35</span>
+                <span class="mk-external">56</span>
+                <span class="mk-total">91</span>
+                <span class="mk-grade grade-ap">A+</span>
+                <button class="row-del-btn" aria-label="Remove subject" onclick="removeSubject(2)">×</button>
+              </li>
+
+              <li class="marks-row" data-id="3">
+                <span class="mk-subject">Computer Networks</span>
+                <span class="mk-code">CSE207</span>
+                <span class="mk-credits">4</span>
+                <span class="mk-internal">36</span>
+                <span class="mk-external">52</span>
+                <span class="mk-total">88</span>
+                <span class="mk-grade grade-ap">A+</span>
+                <button class="row-del-btn" aria-label="Remove subject" onclick="removeSubject(3)">×</button>
+              </li>
+
+              <li class="marks-row" data-id="4">
+                <span class="mk-subject">Basic Electrical Engineering</span>
+                <span class="mk-code">ECL110</span>
+                <span class="mk-credits">3</span>
+                <span class="mk-internal">32</span>
+                <span class="mk-external">49</span>
+                <span class="mk-total">81</span>
+                <span class="mk-grade grade-a">A</span>
+                <button class="row-del-btn" aria-label="Remove subject" onclick="removeSubject(4)">×</button>
+              </li>
+
+              <li class="marks-row" data-id="5">
+                <span class="mk-subject">Mathematics III</span>
+                <span class="mk-code">MTH201</span>
+                <span class="mk-credits">4</span>
+                <span class="mk-internal">34</span>
+                <span class="mk-external">58</span>
+                <span class="mk-total">92</span>
+                <span class="mk-grade grade-o">O</span>
+                <button class="row-del-btn" aria-label="Remove subject" onclick="removeSubject(5)">×</button>
+              </li>
+
+            </ul>
+
+            <!-- Empty state (hidden by default) -->
+            <div class="marks-empty" id="marksEmpty" style="display:none;">
+              <p>No subjects added yet. Click "Add Subject" to begin.</p>
+            </div>
+          </div>
+
+          <!-- CGPA summary from marks -->
+          <div class="marks-summary">
+            <span class="ms-label">Semester SGPA (calculated)</span>
+            <span class="ms-val" id="sgpaCalc">8.60</span>
+          </div>
+        </section>
+
+        <!-- Add subject modal (inline) -->
+        <div class="add-subject-panel" id="addSubjectPanel" style="display:none;">
+          <div class="asp-head">
+            <span>Add New Subject</span>
+            <button class="asp-close" id="closeAddPanel" type="button">×</button>
+          </div>
+          <form id="addSubjectForm" novalidate>
+            <div class="asp-grid">
+              <div class="form-group asp-span-2">
+                <label class="form-label" for="subjName">Subject Name</label>
+                <input class="form-input" type="text" id="subjName" placeholder="e.g. Computer Networks" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="subjCode">Subject Code</label>
+                <input class="form-input" type="text" id="subjCode" placeholder="CSE207" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="subjCredits">Credits</label>
+                <input class="form-input" type="number" id="subjCredits" min="1" max="6" placeholder="4" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="subjInternal">Internal Marks</label>
+                <input class="form-input" type="number" id="subjInternal" min="0" max="40" placeholder="0–40" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="subjExternal">External Marks</label>
+                <input class="form-input" type="number" id="subjExternal" min="0" max="60" placeholder="0–60" required />
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Add Subject</button>
+              <button type="button" class="btn-secondary" id="cancelAddSubj">Cancel</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="apex-footer">
+    <div class="footer-inner">
+      <span class="footer-left">APEX © 2025 · NorthCap University</span>
+      <div class="footer-right">
+        <a href="about.html">About</a>
+        <a href="#">Methodology</a>
+        <a href="#">API Docs</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/profile.js"></script>
+</body>
+</html>

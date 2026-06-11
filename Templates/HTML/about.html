@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX — About</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/about.css" />
+</head>
+<body class="page-wrapper">
+
+  <!-- Navigation -->
+  <nav class="apex-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        APEX <span>v2.1</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Rankings</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+      </ul>
+      <div class="nav-user">
+        <span class="nav-user-name">22SCSE101234</span>
+        <button class="btn-logout" onclick="window.location='login.html'">Sign out</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="about-main">
+
+    <!-- Hero -->
+    <section class="about-hero container fade-up">
+      <div class="about-hero-inner">
+        <div class="about-hero-left">
+          <span class="hero-eyebrow">About the project</span>
+          <h1>Built on<br/><em>precision.</em></h1>
+        </div>
+        <div class="about-hero-right">
+          <p class="about-lead">
+            APEX is a university-grade student ranking system. It takes a single,
+            authoritative data source — the university records feed — and applies a
+            deterministic C++ engine to compute CGPA, rank students, and surface
+            the results through a clean, authenticated web interface.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline container" />
+
+    <!-- Architecture overview -->
+    <section class="about-section container fade-up fade-up-delay-1">
+      <div class="about-section-label">Architecture</div>
+      <div class="about-section-body">
+        <h2>How it works</h2>
+        <p>
+          APEX is a full-stack system with a clear separation between the data layer,
+          computation engine, and presentation. Student records are ingested from a
+          single university source, processed by the C++ ranking engine, then served
+          over HTTP to the frontend.
+        </p>
+      </div>
+
+      <div class="arch-diagram">
+        <div class="arch-node arch-node-source">
+          <span class="arch-node-label">Data Source</span>
+          <span class="arch-node-sub">University records API<br/>(single source of truth)</span>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node arch-node-engine">
+          <span class="arch-node-label">C++ Engine</span>
+          <span class="arch-node-sub">Ranking · CGPA calc<br/>GPA weighting · Sorting</span>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node arch-node-server">
+          <span class="arch-node-label">HTTP Server</span>
+          <span class="arch-node-sub">cpp-httplib<br/>REST endpoints · Auth</span>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node arch-node-front">
+          <span class="arch-node-label">Frontend</span>
+          <span class="arch-node-sub">HTML · CSS<br/>Vanilla JS</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline-light container" />
+
+    <!-- Tech stack -->
+    <section class="about-section container fade-up fade-up-delay-2">
+      <div class="about-section-label">Technology</div>
+      <div class="about-section-body">
+        <h2>Stack</h2>
+        <p>
+          Purposefully minimal. Every component was chosen to eliminate dependency
+          overhead while maintaining correctness and performance.
+        </p>
+      </div>
+
+      <div class="stack-grid">
+
+        <div class="stack-item">
+          <div class="stack-item-head">
+            <span class="stack-lang">C++17</span>
+            <span class="tag">Backend</span>
+          </div>
+          <p>Core ranking and CGPA computation. The engine is stateless, deterministic, and runs in O(n log n) — dominated by the sort pass.</p>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-item-head">
+            <span class="stack-lang">cpp-httplib</span>
+            <span class="tag">HTTP layer</span>
+          </div>
+          <p>Single-header HTTP/HTTPS library for serving API endpoints. Handles authentication middleware, JSON serialization, and CORS.</p>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-item-head">
+            <span class="stack-lang">HTML5 / CSS3</span>
+            <span class="tag">Frontend</span>
+          </div>
+          <p>Semantic markup and a handcrafted stylesheet. No frameworks, no build step — the browser receives exactly what was written.</p>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-item-head">
+            <span class="stack-lang">Vanilla JS</span>
+            <span class="tag">Interactivity</span>
+          </div>
+          <p>Light DOM scripting for live search, form validation, and the add-subject flow. Zero external JavaScript dependencies.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="hairline-light container" />
+
+    <!-- CGPA methodology -->
+    <section class="about-section container fade-up fade-up-delay-3">
+      <div class="about-section-label">Methodology</div>
+      <div class="about-section-body">
+        <h2>CGPA calculation</h2>
+        <p>
+          APEX uses a credit-weighted grade point average consistent with the
+          University Grants Commission (UGC) 10-point grading scale.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <div class="formula-row">
+          <span class="formula-label">SGPA</span>
+          <span class="formula-eq">= Σ (Grade Point × Credits) / Σ Credits</span>
+        </div>
+        <div class="formula-row">
+          <span class="formula-label">CGPA</span>
+          <span class="formula-eq">= Σ (SGPA × Semester Credits) / Σ Total Credits</span>
+        </div>
+      </div>
+
+      <div class="grade-scale">
+        <div class="grade-scale-header">
+          <span>Marks range</span>
+          <span>Letter grade</span>
+          <span>Grade point</span>
+        </div>
+        <div class="grade-scale-row"><span>90 – 100</span><span>O</span><span>10</span></div>
+        <div class="grade-scale-row"><span>80 – 89</span><span>A+</span><span>9</span></div>
+        <div class="grade-scale-row"><span>70 – 79</span><span>A</span><span>8</span></div>
+        <div class="grade-scale-row"><span>60 – 69</span><span>B+</span><span>7</span></div>
+        <div class="grade-scale-row"><span>50 – 59</span><span>B</span><span>6</span></div>
+        <div class="grade-scale-row"><span>45 – 49</span><span>C</span><span>5</span></div>
+        <div class="grade-scale-row"><span>40 – 44</span><span>P</span><span>4</span></div>
+        <div class="grade-scale-row grade-fail"><span>0 – 39</span><span>F</span><span>0</span></div>
+      </div>
+    </section>
+
+    <hr class="hairline-light container" />
+
+    <!-- Team / credits -->
+    <section class="about-section container fade-up">
+      <div class="about-section-label">Project</div>
+      <div class="about-section-body">
+        <h2>Built at NCU</h2>
+        <p>
+          APEX is a group project developed at NorthCap University, Gurugram, as part of
+          the B.Tech Computer Science curriculum. The system was designed to handle
+          real university-scale data with correctness as the first priority.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <span class="team-initials">AD</span>
+          <div class="team-info">
+            <span class="team-name">Aditya Dagar</span>
+            <span class="team-role">Routing · HTTP server · Project lead</span>
+            <span class="team-id">22SCSE101234</span>
+          </div>
+        </div>
+        <!-- Additional team members can be added here -->
+      </div>
+
+      <div class="repo-block">
+        <span class="repo-label">Source</span>
+        <a href="https://github.com/adixyaxo" target="_blank" rel="noopener" class="repo-link">
+          github.com/adixyaxo
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-left:4px;">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="apex-footer">
+    <div class="footer-inner">
+      <span class="footer-left">APEX © 2025 · NorthCap University</span>
+      <div class="footer-right">
+        <a href="about.html">About</a>
+        <a href="#">Methodology</a>
+        <a href="#">API Docs</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

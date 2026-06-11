@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX — Sign In</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/login.css" />
+</head>
+<body class="login-body">
+
+  <!-- Left panel: brand -->
+  <aside class="login-brand fade-up">
+    <div class="brand-inner">
+
+      <div class="brand-logo">
+        <span class="logo-word">APEX</span>
+        <span class="logo-tag">Academic Performance Exchange</span>
+      </div>
+
+      <div class="brand-statement">
+        <p class="brand-headline">Rank is earned.<br/>Not assigned.</p>
+        <p class="brand-sub">
+          A single source of truth for academic performance
+          across the university. Powered by a deterministic
+          C++ ranking engine.
+        </p>
+      </div>
+
+      <div class="brand-stats">
+        <div class="stat-item">
+          <span class="stat-number" data-target="1200">0</span>
+          <span class="stat-label">Students indexed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="48">0</span>
+          <span class="stat-label">Courses tracked</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="6">0</span>
+          <span class="stat-label">Semesters active</span>
+        </div>
+      </div>
+
+      <div class="brand-footer">
+        <span class="brand-univ">NorthCap University · Gurugram</span>
+        <span class="brand-ver">v2.1.0</span>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- Right panel: form -->
+  <main class="login-form-panel">
+    <div class="form-container fade-up fade-up-delay-2">
+
+      <div class="form-header">
+        <h2>Sign in</h2>
+        <p class="form-desc">Access the ranking dashboard with your university credentials.</p>
+      </div>
+
+      <hr class="hairline" style="margin: var(--space-lg) 0;" />
+
+      <form id="loginForm" novalidate>
+
+        <div class="form-fields">
+          <div class="form-group">
+            <label class="form-label" for="enrollment">Enrollment ID</label>
+            <input
+              class="form-input"
+              type="text"
+              id="enrollment"
+              name="enrollment"
+              placeholder="e.g. 22SCSE101234"
+              autocomplete="username"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <div class="password-wrap">
+              <input
+                class="form-input"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                autocomplete="current-password"
+                required
+              />
+              <button type="button" class="toggle-pw" id="togglePw" aria-label="Toggle password visibility">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-meta">
+          <label class="checkbox-label">
+            <input type="checkbox" id="remember" />
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-text">Keep me signed in</span>
+          </label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <div id="formError" class="form-error" role="alert" aria-live="polite"></div>
+
+        <button type="submit" class="btn-primary login-submit">
+          <span class="btn-text">Authenticate</span>
+          <span class="btn-loader" aria-hidden="true"></span>
+        </button>
+
+      </form>
+
+      <div class="form-footer">
+        <p>Not enrolled? Contact your <a href="mailto:registrar@ncu.edu.in" class="text-link">faculty registrar</a>.</p>
+      </div>
+
+    </div>
+
+    <!-- Cinematic line decoration -->
+    <div class="form-panel-deco" aria-hidden="true">
+      <span class="deco-line"></span>
+      <span class="deco-label">APEX / AUTH</span>
+    </div>
+  </main>
+
+  <script src="../js/login.js"></script>
+</body>
+</html>

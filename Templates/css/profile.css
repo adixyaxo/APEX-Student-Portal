@@ -1,0 +1,477 @@
+/* ============================================================
+   APEX — Profile Page
+   ============================================================ */
+
+.profile-main {
+  padding-top: 56px;
+}
+
+/* ── Hero ── */
+
+.profile-hero {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.profile-identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  background: var(--near-black);
+  color: var(--white);
+}
+
+.profile-meta h1 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin-bottom: var(--space-sm);
+}
+
+.profile-sub {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* ── Stats row ── */
+
+.profile-stats-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  padding: var(--space-lg) 0;
+  border-top: var(--border-light);
+  border-bottom: var(--border-light);
+}
+
+.pstat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pstat-val {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.pstat-key {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+
+.pstat-div {
+  width: 1px;
+  height: 32px;
+  background: var(--grey-light);
+  flex-shrink: 0;
+}
+
+/* ── Grid ── */
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: var(--space-xl);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+  align-items: start;
+}
+
+.profile-col-left,
+.profile-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* ── Section card ── */
+
+.profile-section {
+  border: var(--border-light);
+  padding: var(--space-lg);
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+}
+
+.section-head h3 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.edit-btn {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: none;
+  border: var(--border-light);
+  padding: 4px 12px;
+  cursor: pointer;
+  color: var(--grey-mid);
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.edit-btn:hover,
+.edit-btn.active {
+  border-color: var(--black);
+  color: var(--black);
+}
+
+/* ── Info form ── */
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg) var(--space-xl);
+}
+
+.info-form .form-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.info-form .form-input:not(:disabled) {
+  opacity: 1;
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.save-btn {
+  padding: 10px 28px;
+  font-size: 0.78rem;
+}
+
+/* ── CGPA Chart ── */
+
+.cgpa-chart {
+  position: relative;
+  padding-bottom: var(--space-md);
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-md);
+  height: 160px;
+  padding-bottom: 24px;
+}
+
+.chart-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.bar-label-val {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--grey-mid);
+  letter-spacing: 0.03em;
+}
+
+.chart-bar {
+  width: 100%;
+  height: var(--bar-h);
+  background: var(--grey-faint);
+  border: var(--border-light);
+  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 4px;
+  align-self: flex-end;
+}
+
+.chart-bar-active {
+  background: var(--near-black);
+  border-color: var(--black);
+}
+
+.chart-bar-pending {
+  border-style: dashed;
+  min-height: 8px;
+  height: 8px !important;
+}
+
+.bar-label-sem {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--grey-mid);
+  letter-spacing: 0.06em;
+}
+
+.chart-baseline {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--grey-light);
+}
+
+/* ── Marks table ── */
+
+.marks-section {
+  position: relative;
+}
+
+.add-subject-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--black);
+  color: var(--white);
+  border: var(--border);
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.add-subject-btn:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.marks-table-wrap {
+  overflow-x: auto;
+}
+
+.marks-table-header {
+  display: grid;
+  grid-template-columns: 1.8fr 80px 60px 70px 70px 60px 50px 28px;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: var(--border);
+  margin-bottom: 2px;
+}
+
+.marks-table-header span {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+
+.marks-list {
+  list-style: none;
+}
+
+.marks-row {
+  display: grid;
+  grid-template-columns: 1.8fr 80px 60px 70px 70px 60px 50px 28px;
+  gap: var(--space-sm);
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: var(--border-light);
+  transition: background var(--transition);
+}
+
+.marks-row:hover {
+  background: var(--paper);
+}
+
+.mk-subject {
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mk-code,
+.mk-credits {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--grey-mid);
+}
+
+.mk-internal,
+.mk-external,
+.mk-total {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.mk-grade {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding: 2px 6px;
+  border: 1px solid;
+}
+
+.grade-o  { border-color: var(--black); color: var(--black); background: var(--black); color: var(--white); }
+.grade-ap { border-color: var(--grey-dark); color: var(--grey-dark); }
+.grade-a  { border-color: var(--grey-mid); color: var(--grey-mid); }
+.grade-b  { border-color: var(--grey-light); color: var(--grey-dark); }
+
+.row-del-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--grey-light);
+  line-height: 1;
+  padding: 2px 4px;
+  transition: color var(--transition);
+}
+
+.row-del-btn:hover {
+  color: var(--black);
+}
+
+.marks-empty {
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+
+.marks-empty p {
+  color: var(--grey-mid);
+  font-size: 0.82rem;
+}
+
+/* ── Marks summary ── */
+
+.marks-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-md);
+  margin-top: var(--space-md);
+  border-top: var(--border);
+}
+
+.ms-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+
+.ms-val {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* ── Add subject panel ── */
+
+.add-subject-panel {
+  border: var(--border);
+  padding: var(--space-lg);
+  margin-top: var(--space-md);
+  background: var(--paper);
+  animation: fadeUp 0.25s ease;
+}
+
+.asp-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.asp-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--grey-mid);
+  line-height: 1;
+  transition: color var(--transition);
+  padding: 2px 4px;
+}
+
+.asp-close:hover {
+  color: var(--black);
+}
+
+.asp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg) var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.asp-span-2 {
+  grid-column: 1 / -1;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 900px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-stats-row {
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+  }
+
+  .pstat-div {
+    display: none;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .marks-table-header,
+  .marks-row {
+    grid-template-columns: 1fr 60px 60px 50px 28px;
+  }
+
+  .marks-table-header span:nth-child(2),
+  .marks-table-header span:nth-child(3),
+  .marks-row .mk-code,
+  .marks-row .mk-internal,
+  .marks-row .mk-external {
+    display: none;
+  }
+}

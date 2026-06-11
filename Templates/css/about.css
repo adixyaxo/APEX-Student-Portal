@@ -1,0 +1,380 @@
+/* ============================================================
+   APEX — About Page
+   ============================================================ */
+
+.about-main {
+  padding-top: 56px;
+}
+
+/* ── Hero ── */
+
+.about-hero {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-xl);
+}
+
+.about-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: end;
+}
+
+.hero-eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  margin-bottom: var(--space-md);
+}
+
+.about-hero-inner h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.about-lead {
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: var(--grey-dark);
+  padding-bottom: 6px;
+}
+
+/* ── Sections ── */
+
+.about-section {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: var(--space-xl);
+  row-gap: var(--space-xl);
+}
+
+.about-section-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  padding-top: 6px;
+}
+
+.about-section-body h2 {
+  font-size: 1.6rem;
+  margin-bottom: var(--space-md);
+}
+
+.about-section-body p {
+  max-width: 600px;
+}
+
+/* Architecture diagram — spans full width */
+.arch-diagram,
+.stack-grid,
+.method-block,
+.grade-scale,
+.team-grid,
+.repo-block {
+  grid-column: 2 / -1;
+}
+
+/* ── Architecture diagram ── */
+
+.arch-diagram {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  padding: var(--space-xl);
+  border: var(--border-light);
+  background: var(--paper);
+  overflow-x: auto;
+}
+
+.arch-node {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-md) var(--space-lg);
+  border: var(--border);
+  background: var(--white);
+  min-width: 140px;
+}
+
+.arch-node-engine {
+  background: var(--black);
+  border-color: var(--black);
+}
+
+.arch-node-engine .arch-node-label,
+.arch-node-engine .arch-node-sub {
+  color: var(--white);
+}
+
+.arch-node-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.arch-node-sub {
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--grey-mid);
+}
+
+.arch-arrow {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--grey-light);
+  flex-shrink: 0;
+}
+
+/* ── Stack grid ── */
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.stack-item {
+  padding: var(--space-lg);
+  border: var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  transition: border-color var(--transition);
+}
+
+.stack-item:hover {
+  border-color: var(--black);
+}
+
+.stack-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stack-lang {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.stack-item p {
+  font-size: 0.8rem;
+  line-height: 1.75;
+}
+
+/* ── Formula block ── */
+
+.method-block {
+  padding: var(--space-lg);
+  border-left: 2px solid var(--black);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.formula-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-lg);
+}
+
+.formula-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  min-width: 50px;
+}
+
+.formula-eq {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  letter-spacing: -0.01em;
+}
+
+/* ── Grade scale ── */
+
+.grade-scale {
+  border: var(--border-light);
+  overflow: hidden;
+}
+
+.grade-scale-header,
+.grade-scale-row {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px;
+  gap: var(--space-md);
+  padding: 10px var(--space-md);
+  border-bottom: var(--border-light);
+}
+
+.grade-scale-header {
+  background: var(--paper);
+}
+
+.grade-scale-header span {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+
+.grade-scale-row span {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.grade-scale-row:last-child {
+  border-bottom: none;
+}
+
+.grade-scale-row.grade-fail span {
+  color: var(--grey-mid);
+}
+
+/* ── Team ── */
+
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.team-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  border: var(--border-light);
+  transition: border-color var(--transition);
+}
+
+.team-card:hover {
+  border-color: var(--black);
+}
+
+.team-initials {
+  width: 44px;
+  height: 44px;
+  background: var(--near-black);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.team-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.team-name {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.team-role {
+  font-size: 0.76rem;
+  color: var(--grey-mid);
+}
+
+.team-id {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--grey-light);
+  letter-spacing: 0.04em;
+}
+
+/* ── Repo block ── */
+
+.repo-block {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-md) 0;
+  border-top: var(--border-light);
+}
+
+.repo-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+
+.repo-link {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--grey-light);
+  transition: text-decoration-color var(--transition);
+}
+
+.repo-link:hover {
+  text-decoration-color: var(--black);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 900px) {
+  .about-hero-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .about-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .arch-diagram,
+  .stack-grid,
+  .method-block,
+  .grade-scale,
+  .team-grid,
+  .repo-block {
+    grid-column: 1;
+  }
+
+  .arch-diagram {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .arch-arrow {
+    transform: rotate(90deg);
+  }
+
+  .stack-grid {
+    grid-template-columns: 1fr;
+  }
+}
