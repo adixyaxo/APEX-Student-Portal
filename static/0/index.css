@@ -1,9 +1,9 @@
 /* ============================================================
-   APEX — Rankings / Index Page
+   APEX — Rankings / Index Page  ·  Dark Theme
    ============================================================ */
 
 .rankings-main {
-  padding-top: 56px; /* nav height */
+  padding-top: 56px;
 }
 
 /* ── Hero ── */
@@ -23,7 +23,7 @@
   font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
   margin-bottom: var(--space-md);
 }
 
@@ -42,7 +42,7 @@
 .hero-desc {
   font-size: 0.85rem;
   line-height: 1.8;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
   max-width: 400px;
 }
 
@@ -72,16 +72,17 @@
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 500;
+  color: var(--fg);
 }
 
 .controls-sep {
-  color: var(--grey-light);
+  color: #2A2A2A;
   font-size: 0.9rem;
 }
 
 .controls-desc {
   font-size: 0.8rem;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
 }
 
 .controls-right {
@@ -99,28 +100,28 @@
 .search-icon {
   position: absolute;
   left: 10px;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
   pointer-events: none;
 }
 
 .search-input {
   font-family: var(--font-body);
   font-size: 0.8rem;
-  background: var(--paper);
-  border: var(--border-light);
+  background: var(--surface);
+  border: var(--border);
   outline: none;
   padding: 8px 12px 8px 32px;
-  color: var(--black);
+  color: var(--fg);
   width: 220px;
   transition: border-color var(--transition);
 }
 
 .search-input:focus {
-  border-color: var(--black);
+  border-color: #3A3A3A;
 }
 
 .search-input::placeholder {
-  color: var(--grey-light);
+  color: var(--fg-dim);
 }
 
 .filter-btn {
@@ -133,16 +134,16 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   background: transparent;
-  border: var(--border-light);
+  border: var(--border);
   padding: 8px 16px;
   cursor: pointer;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
   transition: border-color var(--transition), color var(--transition);
 }
 
 .filter-btn:hover {
-  border-color: var(--black);
-  color: var(--black);
+  border-color: #3A3A3A;
+  color: var(--fg);
 }
 
 /* ── Table ── */
@@ -156,7 +157,7 @@
   grid-template-columns: 64px 1fr 160px 80px 180px 80px 80px;
   gap: var(--space-md);
   padding: var(--space-sm) 0;
-  border-bottom: var(--border);
+  border-bottom: 1px solid #2A2A2A;
   margin-bottom: 2px;
 }
 
@@ -166,21 +167,21 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
 }
 
-/* ── Ranking list ── */
+/* ── Ranking rows ── */
 
 .rankings-list {
   list-style: none;
 }
 
 /*
-  SIGNATURE ELEMENT:
-  Each row uses a CSS custom property --row-opacity
-  defined inline on the element. This encodes rank visually:
-  Rank 1 = full presence, Rank 10 = near-translucent.
-  The left border height also scales with opacity.
+  SIGNATURE ELEMENT — dark edition:
+  Opacity fade from 1.00 → 0.28 still holds.
+  The left border accent bar glows at the top of the list
+  and dissolves toward the bottom, same as light.
+  Hover restores full opacity + subtle surface lift.
 */
 
 .rank-row {
@@ -189,14 +190,13 @@
   gap: var(--space-md);
   align-items: center;
   padding: 18px 0;
-  border-bottom: var(--border-light);
+  border-bottom: 1px solid #161616;
   opacity: var(--row-opacity);
   transition: opacity var(--transition), background var(--transition);
   position: relative;
   cursor: default;
 }
 
-/* Left accent bar — shrinks with rank */
 .rank-row::before {
   content: '';
   position: absolute;
@@ -205,13 +205,18 @@
   transform: translateY(-50%);
   width: 2px;
   height: calc(var(--row-opacity) * 40px);
-  background: var(--black);
+  background: var(--fg);
   transition: height var(--transition);
+  opacity: 0.6;
 }
 
 .rank-row:hover {
   opacity: 1 !important;
-  background: var(--paper);
+  background: var(--surface);
+  padding-left: var(--space-sm);
+  margin-left: calc(var(--space-sm) * -1);
+  margin-right: calc(var(--space-sm) * -1);
+  padding-right: var(--space-sm);
 }
 
 /* Rank number */
@@ -225,13 +230,13 @@
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 500;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
   letter-spacing: 0.05em;
 }
 
 .rank-crown {
   font-size: 0.55rem;
-  color: var(--black);
+  color: var(--fg);
   line-height: 1;
 }
 
@@ -241,12 +246,13 @@
   font-size: 0.88rem;
   font-weight: 500;
   letter-spacing: -0.01em;
+  color: var(--fg);
 }
 
 .student-semester {
   display: block;
   font-size: 0.7rem;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
   margin-top: 2px;
 }
 
@@ -255,11 +261,11 @@
 .col-branch {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
   letter-spacing: 0.03em;
 }
 
-/* CGPA column */
+/* CGPA */
 .col-cgpa {
   display: flex;
   flex-direction: column;
@@ -271,14 +277,14 @@
   font-size: 0.92rem;
   font-weight: 500;
   letter-spacing: -0.01em;
+  color: var(--fg);
 }
 
-/* CGPA fill bar */
 .cgpa-bar {
   display: block;
   width: 100%;
   height: 2px;
-  background: var(--grey-faint);
+  background: #1E1E1E;
   position: relative;
   max-width: 100px;
 }
@@ -290,7 +296,8 @@
   left: 0;
   height: 100%;
   width: var(--fill);
-  background: var(--black);
+  background: var(--fg);
+  opacity: 0.7;
 }
 
 /* Credits */
@@ -305,13 +312,13 @@
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.06em;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
   transition: color var(--transition);
   white-space: nowrap;
 }
 
 .row-link:hover {
-  color: var(--black);
+  color: var(--fg);
 }
 
 /* ── Your rank section ── */
@@ -327,6 +334,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-xl);
+  background: var(--surface);
 }
 
 .yr-label {
@@ -334,7 +342,7 @@
   font-size: 0.65rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
   display: block;
   margin-bottom: var(--space-md);
 }
@@ -351,15 +359,16 @@
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 1;
+  color: var(--fg);
 }
 
 .yr-percentile {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
   padding: 2px 8px;
-  border: var(--border-light);
+  border: var(--border-mid);
 }
 
 .your-rank-right {
@@ -380,13 +389,14 @@
   font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: -0.02em;
+  color: var(--fg);
 }
 
 .yr-stat-key {
   font-size: 0.68rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--grey-mid);
+  color: var(--fg-mid);
 }
 
 .yr-btn {
@@ -398,14 +408,8 @@
 /* ── Responsive ── */
 
 @media (max-width: 900px) {
-  .rankings-hero {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-  }
-
-  .table-header {
-    display: none;
-  }
+  .rankings-hero { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .table-header { display: none; }
 
   .rank-row {
     grid-template-columns: 1fr;
@@ -413,30 +417,15 @@
     padding: var(--space-md) 0;
   }
 
-  .rank-row::before {
-    left: -16px;
+  .rank-row:hover {
+    padding-left: var(--space-sm);
+    margin-left: calc(var(--space-sm) * -1);
   }
 
-  .col-id,
-  .col-branch,
-  .col-credits {
-    display: none;
-  }
+  .rank-row::before { left: -16px; }
+  .col-id, .col-branch, .col-credits { display: none; }
+  .col-cgpa { flex-direction: row; align-items: center; gap: var(--space-md); }
 
-  .col-cgpa {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--space-md);
-  }
-
-  .your-rank-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-lg);
-  }
-
-  .your-rank-right {
-    flex-wrap: wrap;
-    gap: var(--space-lg);
-  }
+  .your-rank-inner { flex-direction: column; align-items: flex-start; gap: var(--space-lg); }
+  .your-rank-right { flex-wrap: wrap; gap: var(--space-lg); }
 }

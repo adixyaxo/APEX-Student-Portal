@@ -1,5 +1,5 @@
-#include <iostream>
-#include "./src/server.cpp"
+#include "./src/server.hpp"
+#include "./src/classes.hpp"
 
 int main() {
     run_app();

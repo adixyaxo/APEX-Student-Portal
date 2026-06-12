@@ -89,7 +89,7 @@ if (form) {
       await new Promise(r => setTimeout(r, 800));
 
       // Demo: any credentials pass
-      window.location.href = 'index.html';
+      window.location.href = '/';
 
     } catch (err) {
       setLoading(false);

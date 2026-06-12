@@ -4,25 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>APEX — About</title>
-  <link rel="stylesheet" href="../static/style.css" />
-  <link rel="stylesheet" href="../static/about.css" />
+  <link rel="stylesheet" href="/static/{{theme}}/style.css" />
+  <link rel="stylesheet" href="/static/{{theme}}/about.css" />
 </head>
 <body class="page-wrapper">
 
   <!-- Navigation -->
   <nav class="apex-nav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
+      <a href="/" class="nav-logo">
         APEX <span>v2.1</span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Rankings</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="/">Rankings</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/about" class="active">About</a></li>
       </ul>
       <div class="nav-user">
         <span class="nav-user-name">22SCSE101234</span>
-        <button class="btn-logout" onclick="window.location='login.html'">Sign out</button>
+        <button class="btn-logout" onclick="window.location='/signout'">Sign out</button>
       </div>
     </div>
   </nav>
@@ -75,7 +75,7 @@
         <div class="arch-arrow">→</div>
         <div class="arch-node arch-node-server">
           <span class="arch-node-label">HTTP Server</span>
-          <span class="arch-node-sub">cpp-httplib<br/>REST endpoints · Auth</span>
+          <span class="arch-node-sub">Crow<br/>REST endpoints · Auth</span>
         </div>
         <div class="arch-arrow">→</div>
         <div class="arch-node arch-node-front">
@@ -110,10 +110,10 @@
 
         <div class="stack-item">
           <div class="stack-item-head">
-            <span class="stack-lang">cpp-httplib</span>
+            <span class="stack-lang">Crow</span>
             <span class="tag">HTTP layer</span>
           </div>
-          <p>Single-header HTTP/HTTPS library for serving API endpoints. Handles authentication middleware, JSON serialization, and CORS.</p>
+          <p>Single-header C++ web framework for serving pages and API endpoints, with routing, JSON helpers, and static file support.</p>
         </div>
 
         <div class="stack-item">
@@ -221,7 +221,7 @@
     <div class="footer-inner">
       <span class="footer-left">APEX © 2025 · NorthCap University</span>
       <div class="footer-right">
-        <a href="about.html">About</a>
+        <a href="/about">About</a>
         <a href="#">Methodology</a>
         <a href="#">API Docs</a>
       </div>

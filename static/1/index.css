@@ -1,0 +1,442 @@
+/* ============================================================
+   APEX — Rankings / Index Page
+   ============================================================ */
+
+.rankings-main {
+  padding-top: 56px; /* nav height */
+}
+
+/* ── Hero ── */
+
+.rankings-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: end;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-xl);
+}
+
+.hero-eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  margin-bottom: var(--space-md);
+}
+
+.rankings-hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding-bottom: 6px;
+}
+
+.hero-desc {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--grey-mid);
+  max-width: 400px;
+}
+
+.hero-meta {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* ── Controls ── */
+
+.controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
+.controls-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.controls-label {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.controls-sep {
+  color: var(--grey-light);
+  font-size: 0.9rem;
+}
+
+.controls-desc {
+  font-size: 0.8rem;
+  color: var(--grey-mid);
+}
+
+.controls-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  color: var(--grey-mid);
+  pointer-events: none;
+}
+
+.search-input {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  background: var(--paper);
+  border: var(--border-light);
+  outline: none;
+  padding: 8px 12px 8px 32px;
+  color: var(--black);
+  width: 220px;
+  transition: border-color var(--transition);
+}
+
+.search-input:focus {
+  border-color: var(--black);
+}
+
+.search-input::placeholder {
+  color: var(--grey-light);
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: transparent;
+  border: var(--border-light);
+  padding: 8px 16px;
+  cursor: pointer;
+  color: var(--grey-mid);
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--black);
+  color: var(--black);
+}
+
+/* ── Table ── */
+
+.table-section {
+  padding-bottom: var(--space-2xl);
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 64px 1fr 160px 80px 180px 80px 80px;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: var(--border);
+  margin-bottom: 2px;
+}
+
+.table-header span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+
+/* ── Ranking list ── */
+
+.rankings-list {
+  list-style: none;
+}
+
+/*
+  SIGNATURE ELEMENT:
+  Each row uses a CSS custom property --row-opacity
+  defined inline on the element. This encodes rank visually:
+  Rank 1 = full presence, Rank 10 = near-translucent.
+  The left border height also scales with opacity.
+*/
+
+.rank-row {
+  display: grid;
+  grid-template-columns: 64px 1fr 160px 80px 180px 80px 80px;
+  gap: var(--space-md);
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: var(--border-light);
+  opacity: var(--row-opacity);
+  transition: opacity var(--transition), background var(--transition);
+  position: relative;
+  cursor: default;
+}
+
+/* Left accent bar — shrinks with rank */
+.rank-row::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: calc(var(--row-opacity) * 40px);
+  background: var(--black);
+  transition: height var(--transition);
+}
+
+.rank-row:hover {
+  opacity: 1 !important;
+  background: var(--paper);
+}
+
+/* Rank number */
+.col-rank {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rank-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--grey-mid);
+  letter-spacing: 0.05em;
+}
+
+.rank-crown {
+  font-size: 0.55rem;
+  color: var(--black);
+  line-height: 1;
+}
+
+/* Name */
+.student-name {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.student-semester {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--grey-mid);
+  margin-top: 2px;
+}
+
+/* ID / Branch */
+.col-id,
+.col-branch {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--grey-mid);
+  letter-spacing: 0.03em;
+}
+
+/* CGPA column */
+.col-cgpa {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cgpa-value {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* CGPA fill bar */
+.cgpa-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--grey-faint);
+  position: relative;
+  max-width: 100px;
+}
+
+.cgpa-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--fill);
+  background: var(--black);
+}
+
+/* Credits */
+.col-credits {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--grey-dark);
+}
+
+/* Row link */
+.row-link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--grey-mid);
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+
+.row-link:hover {
+  color: var(--black);
+}
+
+/* ── Your rank section ── */
+
+.your-rank-section {
+  padding-bottom: var(--space-2xl);
+}
+
+.your-rank-inner {
+  border: var(--border);
+  padding: var(--space-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+}
+
+.yr-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.yr-data {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+}
+
+.yr-rank {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.yr-percentile {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--grey-mid);
+  padding: 2px 8px;
+  border: var(--border-light);
+}
+
+.your-rank-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.yr-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: right;
+}
+
+.yr-stat-val {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.yr-stat-key {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+
+.yr-btn {
+  padding: 10px 24px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 900px) {
+  .rankings-hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .table-header {
+    display: none;
+  }
+
+  .rank-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+    padding: var(--space-md) 0;
+  }
+
+  .rank-row::before {
+    left: -16px;
+  }
+
+  .col-id,
+  .col-branch,
+  .col-credits {
+    display: none;
+  }
+
+  .col-cgpa {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .your-rank-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+
+  .your-rank-right {
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+  }
+}

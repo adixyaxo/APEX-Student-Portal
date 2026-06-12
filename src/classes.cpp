@@ -1,99 +1,57 @@
-#include <string>
-#include <classes.hpp>
-#include <vector>
-#include <unordered_map>
+#include "classes.hpp"
+#include "../libs/json.hpp"
+#include <fstream>
+#include <iostream>
 
-class SUBJECT
-{
-private:
-  std::string name;
-  std::string code;
-  int credits;
-  int total_internal;
-  int total_external;
-  int internal;
-  int external;
-  std::string grade;
-
-public:
-  SUBJECT(std::string name, std::string code, int credits, int total_internal, int total_external, int internal, int external, std::string grade);
-  ~SUBJECT();
-};
+using json = nlohmann::json;
 
 SUBJECT::SUBJECT(std::string name, std::string code, int credits, int total_internal, int total_external, int internal, int external, std::string grade)
+    : name(name),
+      code(code),
+      credits(credits),
+      total_internal(total_internal),
+      total_external(total_external),
+      internal(internal),
+      external(external),
+      grade(grade)
 {
-  this->name = name;
-  this->code = code;
-  this->credits = credits;
-  this->total_internal = total_internal;
-  this->total_external = total_external;
-  this->internal = internal;
-  this->external = external;
-  this->grade = grade;
 }
 
 SUBJECT::~SUBJECT()
 {
 }
 
-class STUDENT
+STUDENT::STUDENT(std::string name,
+                 std::string roll_no,
+                 std::string course,
+                 std::string specialization,
+                 int current_semester,
+                 float current_cgpa,
+                 int current_rank,
+                 int credits_earned,
+                 double percentile,
+                 int rank_change,
+                 std::string mobile,
+                 std::string university_mail,
+                 std::string password,
+                 int theme)
+    : name(name),
+      roll_no(roll_no),
+      course(course),
+      specialization(specialization),
+      current_semester(current_semester),
+      current_cgpa(current_cgpa),
+      current_rank(current_rank),
+      credits_earned(credits_earned),
+      percentile(percentile),
+      rank_change(rank_change),
+      mobile(mobile),
+      university_mail(university_mail),
+      password(password),
+      theme(theme)
 {
-private:
-  std::string name;
-  std::string roll_no;
-  std::string course;
-  std::string specialization;
-  int current_semester;
-  float current_cgpa;
-  int current_rank;
-  int credits_earned;
-  double percentile;
-  int rank_change;
-  std::string mobile;
-  std::string university_mail;
-  std::string password;
-  std::unordered_map<std::string, SUBJECT> subjects;
+}
 
-public:
-  // getters
-  std::string get_name() { return name; }
-  std::string get_roll_no() { return roll_no; }
-  std::string get_course() { return course; }
-  std::string get_specialization() { return specialization; }
-  int get_current_semester() { return current_semester; }
-  float get_current_cgpa() { return current_cgpa; }
-  int get_current_rank() { return current_rank; }
-  int get_credits_earned() { return credits_earned; }
-  double get_percentile() { return percentile; }
-  int get_rank_change() { return rank_change; }
-  std::string get_mobile() { return mobile; }
-  std::string get_university_mail() { return university_mail; }
-  std::unordered_map<std::string, SUBJECT> get_subjects() { return subjects; }
-  // setters
-  void set_name(std::string name) { this->name = name; }
-  void set_roll_no(std::string roll_no) { this->roll_no = roll_no; }
-  void set_course(std::string course) { this->course = course; }
-  void set_specialization(std::string specialization) { this->specialization = specialization; }
-  void set_current_semester(int current_semester) { this->current_semester = current_semester; }
-  void set_current_cgpa(float current_cgpa) { this->current_cgpa = current_cgpa; }
-  void set_current_rank(int current_rank) { this->current_rank = current_rank; }
-  void set_credits_earned(int credits_earned) { this->credits_earned = credits_earned; }
-  void set_percentile(double percentile) { this->percentile = percentile; }
-  void set_rank_change(int rank_change) { this->rank_change = rank_change; }
-  void set_mobile(std::string mobile) { this->mobile = mobile; }
-  void set_university_mail(std::string university_mail) { this->university_mail = university_mail; }
-  void set_password(std::string password) { this->password = password; }
-  void set_subjects(std::unordered_map<std::string, SUBJECT> subjects) { this->subjects = subjects; }
-  STUDENT(std::string name,
-          std::string roll_no,
-          std::string course,
-          std::string specialization,
-          int current_semester,
-          std::string mobile,
-          std::string university_mail,
-          std::string password);
-  ~STUDENT();
-};
 STUDENT::STUDENT(std::string name,
                  std::string roll_no,
                  std::string course,
@@ -101,15 +59,56 @@ STUDENT::STUDENT(std::string name,
                  int current_semester,
                  std::string mobile,
                  std::string university_mail,
-                 std::string password)
+                 std::string password,
+                 int theme)
+    : STUDENT(name, roll_no, course, specialization, current_semester, 0.0f, 0, 0, 0.0, 0, mobile, university_mail, password, theme)
 {
-  this->name = name;
-  this->roll_no = roll_no;
-  this->course = course;
-  this->specialization = specialization;
-  this->current_semester = current_semester;
-  this->course = course;
-  this->mobile = mobile;
-  this->university_mail = university_mail;
-  this->password = password;
+}
+
+STUDENT::~STUDENT()
+{
+}
+
+int STUDENT::Student_Fetch(const std::string &filename)
+{
+  std::string path = filename;
+  path = "Database/" + filename;
+  std::ifstream file(path);
+
+  if (!file.is_open())
+  {
+    file.clear();
+    file.open(path);
+  }
+
+  if (!file.is_open())
+  {
+    std::cerr << "Could not open student data file: " << filename << '\n';
+    return 1;
+  }
+
+  json j;
+  try
+  {
+    file >> j;
+  }
+  catch (const json::exception &error)
+  {
+    std::cerr << "Could not parse student data file: " << path << " (" << error.what() << ")\n";
+    return 2;
+  }
+
+  std::unordered_map<std::string, std::string> mp;
+
+  for (auto &[key, value] : j.items())
+  {
+    mp[key] = value.dump();
+  }
+
+  for (const auto &[key, value] : mp)
+  {
+    std::cout << key << " : " << value << '\n';
+  }
+
+  return 0;
 }

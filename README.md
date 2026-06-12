@@ -27,22 +27,32 @@ The design philosophy is **hyper-minimal and cinematic**: black-and-white typogr
 
 ```
 apex/
-├── login.html
-├── index.html
-├── profile.html
-├── about.html
+├── main.cpp
+├── src/
+│   ├── server.cpp       # Crow routes and template rendering
+│   ├── classes.hpp      # Student and subject declarations
+│   ├── classes.cpp      # Student and subject implementations
+│   └── auth.cpp         # Auth endpoint stub
 │
-├── css/
-│   ├── style.css        # Global tokens, typography, nav, footer, shared components
-│   ├── login.css        # Split-panel auth layout
-│   ├── index.css        # Rankings table with opacity-fade signature
-│   ├── profile.css      # Marks table, CGPA chart, edit forms
-│   └── about.css        # Architecture diagram, grade scale, team block
+├── templates/
+│   ├── login.html
+│   ├── index.html
+│   ├── profile.html
+│   └── about.html
 │
-└── js/
-    ├── login.js         # Counter animation, form validation, auth fetch hook
-    ├── index.js         # Live search filter on rankings list
-    └── profile.js       # Subject CRUD, SGPA calculation, edit-info toggle
+├── static/
+│   ├── 0/               # Theme 0 stylesheets
+│   ├── 1/               # Theme 1 stylesheets
+│   ├── login.js         # Counter animation, form validation, auth fetch hook
+│   ├── index.js         # Live search filter on rankings list
+│   └── profile.js       # Subject CRUD, SGPA calculation, edit-info toggle
+│
+├── libs/
+│   ├── crow_all.h
+│   └── json.hpp
+│
+└── Database/
+    └── data.json
 ```
 
 ---
@@ -81,7 +91,7 @@ The rankings list uses `--row-opacity` as a CSS custom property set inline on ea
 | Layer | Technology |
 |-------|------------|
 | Ranking engine | C++17 — weighted CGPA, O(n log n) sort |
-| HTTP server | [cpp-httplib](https://github.com/yhirose/cpp-httplib) — single-header HTTP/HTTPS |
+| HTTP server | [Crow](https://github.com/CrowCpp/Crow) — single-header C++ web framework |
 | Frontend | HTML5, CSS3, Vanilla JS — zero external dependencies |
 | Auth | JWT tokens via C++ backend; `localStorage` on the client |
 
@@ -113,7 +123,7 @@ CGPA  = Σ (SGPA × Semester Credits) /  Σ Total Credits
 
 Each JS file contains clearly marked `BACKEND HOOK` comments. Replace the simulated logic at those points with real `fetch()` calls to the C++ server endpoints.
 
-**Login** — `js/login.js`:
+**Login** — `static/login.js`:
 ```javascript
 const res = await fetch('/api/auth/login', {
   method: 'POST',
@@ -133,7 +143,7 @@ const { rankings } = await res.json();
 // Render rows from rankings array
 ```
 
-**Profile / subjects** — `js/profile.js`:
+**Profile / subjects** — `static/profile.js`:
 ```javascript
 // POST /api/subjects   — add subject
 // DELETE /api/subjects/:id — remove subject
@@ -144,18 +154,12 @@ const { rankings } = await res.json();
 
 ## Running locally
 
-No build step. Open any `.html` file directly in a browser for UI development.
-
-For backend integration, start the cpp-httplib server and ensure the HTML files are served from the same origin to avoid CORS issues, or configure the C++ server with appropriate CORS headers.
+The HTML files are Crow mustache templates, so run the Crow server to render them with the active theme and serve static assets from the same origin.
 
 ```bash
 # Build and run the C++ server (adjust to your build setup)
-g++ -std=c++17 -o apex_server main.cpp -lpthread
+g++ -std=c++17 -o apex_server main.cpp src/server.cpp src/classes.cpp src/auth.cpp -lpthread
 ./apex_server
-
-# Frontend — serve static files
-python3 -m http.server 8080
-# then open http://localhost:8080
 ```
 
 ---
