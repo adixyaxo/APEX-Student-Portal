@@ -1,8 +1,9 @@
 #ifndef CLASSES_HPP
 #define CLASSES_HPP
-
+#include "../libs/crow_all.h"
 #include <string>
 #include <unordered_map>
+#include "../libs/json.hpp"
 
 class SUBJECT
 {
@@ -26,6 +27,26 @@ public:
           int external,
           std::string grade);
   ~SUBJECT();
+  SUBJECT();
+  //getters
+  const std::string &get_name() const { return name; }
+  const std::string &get_code() const { return code; }
+  int get_credits() const { return credits; }
+  int get_total_internal() const { return total_internal; }
+  int get_total_external() const { return total_external; }
+  int get_internal() const { return internal; }
+  int get_external() const { return external; }
+  const std::string &get_grade() const { return grade; }
+  //setters
+  void set_name(const std::string &name) { this->name = name; }
+  void set_code(const std::string &code) { this->code = code; }
+  void set_credits(int credits) { this->credits = credits; }
+  void set_total_internal(int total_internal) { this->total_internal = total_internal; }
+  void set_total_external(int total_external) { this->total_external = total_external; }
+  void set_internal(int internal) { this->internal = internal; }
+  void set_external(int external) { this->external = external; }
+  void set_grade(const std::string &grade) { this->grade = grade; }
+
 };
 
 class STUDENT
@@ -103,10 +124,12 @@ public:
   void set_mobile(const std::string &mobile) { this->mobile = mobile; }
   void set_university_mail(const std::string &university_mail) { this->university_mail = university_mail; }
   void set_password(const std::string &password) { this->password = password; }
-  void set_subjects(const std::unordered_map<std::string, SUBJECT> &subjects) { this->subjects = subjects; }
+  void set_subjects(const SUBJECT &subject) { this->subjects.emplace(subject.get_name(),subject);}
   void set_theme(int theme) { this->theme = theme; }
-
-  int Student_Fetch(const std::string &filename);
+  void Fetch();
+  crow::mustache::context set_context();
+  int Store();
+  nlohmann::json to_json() const;
 };
 
 #endif

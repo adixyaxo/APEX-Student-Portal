@@ -3,6 +3,7 @@
 #include "server.hpp"
 #include "classes.hpp"
 #include <string>
+#include "../libs/json.hpp"
 
 void run_app()
 {
@@ -16,12 +17,19 @@ void run_app()
                   " ",
                   " ",
                   1);
-    student.Student_Fetch("data.json");
+  SUBJECT english("English", "code", 100, 100, 100, 10, 10, "A+");
+  student.set_subjects(english);
+  if (student.Store() == 0)
+  {
+    std::cout << "\nSucessfully stored students information\n";
+  }
+  else
+    std::cout << "\nerror encountered while storing the student values\n";
+
   CROW_ROUTE(app, "/")([&student]()
                        {
+    auto ctx = student.set_context();
     auto page = crow::mustache::load("index.html");
-    crow::mustache::context ctx;
-    ctx["theme"] = student.get_theme();
     return page.render(ctx); });
   app.bindaddr("0.0.0.0").port(8080).multithreaded().run();
 }
