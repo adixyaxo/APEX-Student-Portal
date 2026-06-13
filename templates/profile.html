@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="/static/{{theme}}/style.css" />
   <link rel="stylesheet" href="/static/{{theme}}/profile.css" />
 </head>
+
 <body class="page-wrapper">
 
   <!-- Navigation -->
@@ -176,7 +178,8 @@
             <h3>Subject Marks</h3>
             <button class="add-subject-btn" id="addSubjectBtn" type="button">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
               </svg>
               Add Subject
             </button>
@@ -196,61 +199,18 @@
             </div>
 
             <ul class="marks-list" id="marksList">
-
+              {{#subjects}}
               <li class="marks-row" data-id="1">
-                <span class="mk-subject">Data Structures & Algorithms</span>
-                <span class="mk-code">CSE201</span>
-                <span class="mk-credits">4</span>
-                <span class="mk-internal">38</span>
-                <span class="mk-external">62</span>
-                <span class="mk-total">100</span>
-                <span class="mk-grade grade-o">O</span>
+                <span class="mk-subject">{{name}}</span>
+                <span class="mk-code">{{code}}</span>
+                <span class="mk-credits">{{credits}}</span>
+                <span class="mk-internal">{{internal}}</span>
+                <span class="mk-external">{{external}}</span>
+                <span class="mk-total">{{total_internal+total_external}}</span>
+                <span class="mk-grade grade-o">{{grade}}</span>
                 <button class="row-del-btn" aria-label="Remove subject" onclick="removeSubject(1)">×</button>
               </li>
-
-              <li class="marks-row" data-id="2">
-                <span class="mk-subject">Operating Systems</span>
-                <span class="mk-code">CSE204</span>
-                <span class="mk-credits">4</span>
-                <span class="mk-internal">35</span>
-                <span class="mk-external">56</span>
-                <span class="mk-total">91</span>
-                <span class="mk-grade grade-ap">A+</span>
-                <button class="row-del-btn" aria-label="Remove subject" onclick="removeSubject(2)">×</button>
-              </li>
-
-              <li class="marks-row" data-id="3">
-                <span class="mk-subject">Computer Networks</span>
-                <span class="mk-code">CSE207</span>
-                <span class="mk-credits">4</span>
-                <span class="mk-internal">36</span>
-                <span class="mk-external">52</span>
-                <span class="mk-total">88</span>
-                <span class="mk-grade grade-ap">A+</span>
-                <button class="row-del-btn" aria-label="Remove subject" onclick="removeSubject(3)">×</button>
-              </li>
-
-              <li class="marks-row" data-id="4">
-                <span class="mk-subject">Basic Electrical Engineering</span>
-                <span class="mk-code">ECL110</span>
-                <span class="mk-credits">3</span>
-                <span class="mk-internal">32</span>
-                <span class="mk-external">49</span>
-                <span class="mk-total">81</span>
-                <span class="mk-grade grade-a">A</span>
-                <button class="row-del-btn" aria-label="Remove subject" onclick="removeSubject(4)">×</button>
-              </li>
-
-              <li class="marks-row" data-id="5">
-                <span class="mk-subject">Mathematics III</span>
-                <span class="mk-code">MTH201</span>
-                <span class="mk-credits">4</span>
-                <span class="mk-internal">34</span>
-                <span class="mk-external">58</span>
-                <span class="mk-total">92</span>
-                <span class="mk-grade grade-o">O</span>
-                <button class="row-del-btn" aria-label="Remove subject" onclick="removeSubject(5)">×</button>
-              </li>
+              {{/subjects}}
 
             </ul>
 
@@ -289,11 +249,13 @@
               </div>
               <div class="form-group">
                 <label class="form-label" for="subjInternal">Internal Marks</label>
-                <input class="form-input" type="number" id="subjInternal" min="0" max="40" placeholder="0–40" required />
+                <input class="form-input" type="number" id="subjInternal" min="0" max="40" placeholder="0–40"
+                  required />
               </div>
               <div class="form-group">
                 <label class="form-label" for="subjExternal">External Marks</label>
-                <input class="form-input" type="number" id="subjExternal" min="0" max="60" placeholder="0–60" required />
+                <input class="form-input" type="number" id="subjExternal" min="0" max="60" placeholder="0–60"
+                  required />
               </div>
             </div>
             <div class="form-actions">
@@ -322,4 +284,5 @@
 
   <script src="/static/profile.js"></script>
 </body>
+
 </html>

@@ -21,8 +21,28 @@
             "name": "English",
             "total_external": 100,
             "total_internal": 100
+        },
+        "Hindi": {
+            "code": "code",
+            "credits": 100,
+            "external": 10,
+            "grade": "A+",
+            "internal": 10,
+            "name": "Hindi",
+            "total_external": 100,
+            "total_internal": 100
+        },
+        "Japnese": {
+            "code": "code",
+            "credits": 100,
+            "external": 10,
+            "grade": "A+",
+            "internal": 10,
+            "name": "Japnese",
+            "total_external": 100,
+            "total_internal": 100
         }
     },
-    "theme": 1,
+    "theme": 0,
     "university_mail": "aditya0dagar@gmail.com"
 }

@@ -130,7 +130,7 @@ int STUDENT::Store()
 {
   // we will implement this function to store the student data in a json file in the database folder
   json j = this->to_json();
-std::string Json_data = j.dump(4);
+  std::string Json_data = j.dump(4);
   std::string path = "../Database/" + this->university_mail + ".json";
   std::cout << Json_data << std::endl;
   std::ofstream file(path);
@@ -218,5 +218,21 @@ crow::mustache::context STUDENT::set_context()
   ctx["mobile"] = mobile;
   ctx["university_mail"] = university_mail;
   ctx["theme"] = theme;
+
+  crow::json::wvalue::list subject_list;
+  for (const auto &[subject_name, subject] : subjects)
+  {
+    crow::json::wvalue s;
+    s["name"] = subject.get_name();
+    s["code"] = subject.get_code();
+    s["credits"] = subject.get_credits();
+    s["total_internal"] = subject.get_total_internal();
+    s["total_external"] = subject.get_total_external();
+    s["internal"] = subject.get_internal();
+    s["external"] = subject.get_external();
+    s["grade"] = subject.get_grade();
+    subject_list.emplace_back(std::move(s));
+  }
+  ctx["subjects"]=std::move(subject_list);
   return ctx;
 };
