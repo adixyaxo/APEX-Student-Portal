@@ -1,3 +1,3 @@
 cd build
 cmake .. && make && ./main
-xdg-open https://localhost:8080/
+xdg-open http://0.0.0.0:8080/

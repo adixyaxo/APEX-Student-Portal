@@ -34,38 +34,38 @@
       <div class="profile-identity">
         <div class="profile-avatar" aria-label="Student initials">AD</div>
         <div class="profile-meta">
-          <h1>Aditya Dagar</h1>
+          <h1>{{name}}</h1>
           <div class="profile-sub">
-            <span class="tag">22SCSE101234</span>
-            <span class="tag">B.Tech CSE</span>
-            <span class="tag">Semester II</span>
+            <span class="tag">{{roll_no}}</span>
+            <span class="tag">{{course}}</span>
+            <span class="tag">Semester {{current_semester}}</span>
           </div>
         </div>
       </div>
 
       <div class="profile-stats-row">
         <div class="pstat">
-          <span class="pstat-val">8.41</span>
+          <span class="pstat-val">{{current_cgpa}}</span>
           <span class="pstat-key">CGPA</span>
         </div>
         <div class="pstat-div"></div>
         <div class="pstat">
-          <span class="pstat-val">#247</span>
+          <span class="pstat-val">#{{current_rank}}</span>
           <span class="pstat-key">University rank</span>
         </div>
         <div class="pstat-div"></div>
         <div class="pstat">
-          <span class="pstat-val">148</span>
+          <span class="pstat-val">{{credits_earned}}</span>
           <span class="pstat-key">Credits earned</span>
         </div>
         <div class="pstat-div"></div>
         <div class="pstat">
-          <span class="pstat-val">Top 20%</span>
+          <span class="pstat-val">Top {{100-percentile}}%</span>
           <span class="pstat-key">Percentile</span>
         </div>
         <div class="pstat-div"></div>
         <div class="pstat">
-          <span class="pstat-val">+12</span>
+          <span class="pstat-val">+{{rank_change}}</span>
           <span class="pstat-key">Rank change</span>
         </div>
       </div>

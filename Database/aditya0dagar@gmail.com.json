@@ -1,0 +1,28 @@
+{
+    "course": "Btech",
+    "credits_earned": 100,
+    "current_cgpa": 9.99,
+    "current_rank": 1,
+    "current_semester": 2,
+    "mobile": "NONE",
+    "name": "Aditya BADBOY",
+    "password": "password",
+    "percentile": 100.0,
+    "rank_change": 100,
+    "roll_no": "25csu016",
+    "specialization": "Computer Science Engineering",
+    "subjects": {
+        "English": {
+            "code": "code",
+            "credits": 100,
+            "external": 10,
+            "grade": "A+",
+            "internal": 10,
+            "name": "English",
+            "total_external": 100,
+            "total_internal": 100
+        }
+    },
+    "theme": 1,
+    "university_mail": "aditya0dagar@gmail.com"
+}

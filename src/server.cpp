@@ -8,23 +8,8 @@
 void run_app()
 {
   crow::SimpleApp app;
-  STUDENT student("aditya",
-                  "25csu016",
-                  "Btech",
-                  "Computer Science Engineering",
-                  2,
-                  " ",
-                  " ",
-                  " ",
-                  0);
-  SUBJECT english("English", "code", 100, 100, 100, 10, 10, "A+");
-  student.set_subjects(english);
-  if (student.Store() == 0)
-  {
-    std::cout << "\nSucessfully stored students information\n";
-  }
-  else
-    std::cout << "\nerror encountered while storing the student values\n";
+  STUDENT student;
+  student.Fetch("aditya0dagar@gmail.com");
 
   CROW_ROUTE(app, "/")([&student]()
                        {
@@ -32,9 +17,14 @@ void run_app()
     auto page = crow::mustache::load("index.html");
     return page.render(ctx); });
   CROW_ROUTE(app, "/profile")([&student]()
-                       {
+                              {
     auto ctx = student.set_context();
     auto page = crow::mustache::load("profile.html");
+    return page.render(ctx); });
+  CROW_ROUTE(app, "/about")([&student]()
+                            {
+    auto ctx = student.set_context();
+    auto page = crow::mustache::load("about.html");
     return page.render(ctx); });
   app.bindaddr("0.0.0.0").port(8080).multithreaded().run();
 }

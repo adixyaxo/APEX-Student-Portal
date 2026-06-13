@@ -28,7 +28,7 @@ public:
           std::string grade);
   ~SUBJECT();
   SUBJECT();
-  //getters
+  // getters
   const std::string &get_name() const { return name; }
   const std::string &get_code() const { return code; }
   int get_credits() const { return credits; }
@@ -37,7 +37,7 @@ public:
   int get_internal() const { return internal; }
   int get_external() const { return external; }
   const std::string &get_grade() const { return grade; }
-  //setters
+  // setters
   void set_name(const std::string &name) { this->name = name; }
   void set_code(const std::string &code) { this->code = code; }
   void set_credits(int credits) { this->credits = credits; }
@@ -46,7 +46,6 @@ public:
   void set_internal(int internal) { this->internal = internal; }
   void set_external(int external) { this->external = external; }
   void set_grade(const std::string &grade) { this->grade = grade; }
-
 };
 
 class STUDENT
@@ -69,6 +68,7 @@ private:
   int theme;
 
 public:
+  STUDENT();
   STUDENT(std::string name,
           std::string roll_no,
           std::string course,
@@ -124,9 +124,9 @@ public:
   void set_mobile(const std::string &mobile) { this->mobile = mobile; }
   void set_university_mail(const std::string &university_mail) { this->university_mail = university_mail; }
   void set_password(const std::string &password) { this->password = password; }
-  void set_subjects(const SUBJECT &subject) { this->subjects.emplace(subject.get_name(),subject);}
+  void set_subjects(const SUBJECT &subject) { this->subjects.emplace(subject.get_name(), subject); }
   void set_theme(int theme) { this->theme = theme; }
-  void Fetch();
+  void Fetch(std::string mail= "");
   crow::mustache::context set_context();
   int Store();
   nlohmann::json to_json() const;

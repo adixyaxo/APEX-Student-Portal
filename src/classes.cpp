@@ -17,10 +17,28 @@ SUBJECT::SUBJECT(std::string name, std::string code, int credits, int total_inte
       grade(grade)
 {
 }
-SUBJECT::SUBJECT():name(""),code(""),credits(0),total_internal(0),total_external(0),internal(0),external(0),grade("")
+SUBJECT::SUBJECT() : name(""), code(""), credits(0), total_internal(0), total_external(0), internal(0), external(0), grade("")
 {
 }
 SUBJECT::~SUBJECT()
+{
+}
+
+STUDENT::STUDENT()
+    : name(""),
+      roll_no(""),
+      course(""),
+      specialization(""),
+      current_semester(0),
+      current_cgpa(0),
+      current_rank(0),
+      credits_earned(0),
+      percentile(0),
+      rank_change(0),
+      mobile(""),
+      university_mail(""),
+      password(""),
+      theme(0)
 {
 }
 
@@ -95,6 +113,7 @@ json STUDENT::to_json() const
   {
     subjects_json[subject_name] = {
         {"name", subject.get_name()},
+        {"code", subject.get_code()},
         {"credits", subject.get_credits()},
         {"total_internal", subject.get_total_internal()},
         {"total_external", subject.get_total_external()},
@@ -110,19 +129,25 @@ json STUDENT::to_json() const
 int STUDENT::Store()
 {
   // we will implement this function to store the student data in a json file in the database folder
-  std::string Json_data = this->to_json().dump();
-  std::string path = "Database/" + this->university_mail + ".json";
+  json j = this->to_json();
+std::string Json_data = j.dump(4);
+  std::string path = "../Database/" + this->university_mail + ".json";
+  std::cout << Json_data << std::endl;
   std::ofstream file(path);
   file << Json_data;
   file.close();
   return 0;
 }
 
-void STUDENT::Fetch()
+void STUDENT::Fetch(std::string mail)
 {
+  if (mail != "" && university_mail == "")
+  {
+    university_mail = mail;
+  }
   std::string filename = university_mail + ".json";
   std::string path = filename;
-  path = "Database/" + filename;
+  path = "../Database/" + filename;
   std::ifstream file(path);
 
   if (!file.is_open())
@@ -159,7 +184,6 @@ void STUDENT::Fetch()
   percentile = j["percentile"].get<double>();
   rank_change = j["rank_change"].get<int>();
   mobile = j["mobile"].get<std::string>();
-  university_mail = j["university_mail"].get<std::string>();
   password = j["password"].get<std::string>();
   theme = j["theme"].get<int>();
 
@@ -174,11 +198,12 @@ void STUDENT::Fetch()
     subject.set_total_external(subject_json["total_external"].get<int>());
     subject.set_internal(subject_json["internal"].get<int>());
     subject.set_external(subject_json["external"].get<int>());
-    subjects.emplace(subject_name, subject);
+    subjects.emplace(subject.get_name(), subject);
   }
 }
 
-crow::mustache::context STUDENT::set_context(){
+crow::mustache::context STUDENT::set_context()
+{
   crow::mustache::context ctx;
   ctx["name"] = name;
   ctx["roll_no"] = roll_no;
