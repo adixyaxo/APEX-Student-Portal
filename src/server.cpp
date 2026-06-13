@@ -16,7 +16,7 @@ void run_app()
                   " ",
                   " ",
                   " ",
-                  1);
+                  0);
   SUBJECT english("English", "code", 100, 100, 100, 10, 10, "A+");
   student.set_subjects(english);
   if (student.Store() == 0)
@@ -30,6 +30,11 @@ void run_app()
                        {
     auto ctx = student.set_context();
     auto page = crow::mustache::load("index.html");
+    return page.render(ctx); });
+  CROW_ROUTE(app, "/profile")([&student]()
+                       {
+    auto ctx = student.set_context();
+    auto page = crow::mustache::load("profile.html");
     return page.render(ctx); });
   app.bindaddr("0.0.0.0").port(8080).multithreaded().run();
 }
