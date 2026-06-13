@@ -233,35 +233,46 @@
             <span>Add New Subject</span>
             <button class="asp-close" id="closeAddPanel" type="button">×</button>
           </div>
-          <form id="addSubjectForm" novalidate>
+          <form id="addSubjectForm" action="/new_subject" method="post" novalidate>
             <div class="asp-grid">
               <div class="form-group asp-span-2">
                 <label class="form-label" for="subjName">Subject Name</label>
-                <input class="form-input" type="text" id="subjName" placeholder="e.g. Computer Networks" required />
+                <input class="form-input" type="text" id="subjName" name="name" placeholder="e.g. Computer Networks"
+                  required />
               </div>
               <div class="form-group">
                 <label class="form-label" for="subjCode">Subject Code</label>
-                <input class="form-input" type="text" id="subjCode" placeholder="CSE207" required />
+                <input class="form-input" type="text" id="subjCode" name="code" placeholder="CSE207" required />
               </div>
               <div class="form-group">
                 <label class="form-label" for="subjCredits">Credits</label>
-                <input class="form-input" type="number" id="subjCredits" min="1" max="6" placeholder="4" required />
+                <input class="form-input" type="number" id="subjCredits" name="credits" min="1" max="6" placeholder="4"
+                  required />
               </div>
               <div class="form-group">
                 <label class="form-label" for="subjInternal">Internal Marks</label>
-                <input class="form-input" type="number" id="subjInternal" min="0" max="40" placeholder="0–40"
-                  required />
+                <input class="form-input" name="internal" type="number" id="subjInternal" min="0" max="40"
+                  placeholder="0–40" required />
               </div>
               <div class="form-group">
-                <label class="form-label" for="subjExternal">External Marks</label>
+                <label class="form-label" name="total_internal" for="Total-External">Total Internal Marks</label>
                 <input class="form-input" type="number" id="subjExternal" min="0" max="60" placeholder="0–60"
                   required />
+                <div class="form-group">
+                  <label class="form-label" for="subjExternal">External Marks</label>
+                  <input class="form-input" name="external" type="number" id="subjExternal" min="0" max="60"
+                    placeholder="0–60" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" name="total_external" for="Total-External">Total External Marks</label>
+                  <input class="form-input" type="number" id="subjExternal" min="0" max="60" placeholder="0–60"
+                    required />
+                </div>
               </div>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn-primary">Add Subject</button>
-              <button type="button" class="btn-secondary" id="cancelAddSubj">Cancel</button>
-            </div>
+              <div class="form-actions">
+                <button type="submit" class="btn-primary">Add Subject</button>
+                <button type="button" class="btn-secondary" id="cancelAddSubj">Cancel</button>
+              </div>
           </form>
         </div>
 

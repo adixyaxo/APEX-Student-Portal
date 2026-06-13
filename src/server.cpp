@@ -26,5 +26,14 @@ void run_app()
     auto ctx = student.set_context();
     auto page = crow::mustache::load("about.html");
     return page.render(ctx); });
+
+  CROW_ROUTE(app, "/new_subject").methods(crow::HTTPMethod::POST)([&student](const crow::request &req)
+                                                                  {
+    auto ctx = student.set_context();
+    auto params = req.get_body_params();
+    std::string name = params.get("name");
+    std::cout<<name<<std::endl;
+    return name; });
+
   app.bindaddr("0.0.0.0").port(8080).multithreaded().run();
 }
